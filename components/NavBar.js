@@ -31,6 +31,9 @@ export default function NavBar() {
             <Link passHref href="/forms">
               <Nav.Link>Forms</Nav.Link>
             </Link>
+            <Link passHref href="/contact">
+              <Nav.Link>Contact</Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
