@@ -1,18 +1,34 @@
 import React from 'react';
-import Loading from '../components/Loading';
+import { Spinner } from 'react-bootstrap';
+import PropTypes from 'prop-types'; // import proptypes package
 
-export default function Props() {
+// THE PROPS ARE "COLOR" AND "CHILDREN"
+// PROPS IS AN OBJECT
+// WE DESTRUCTURE IT SO WE CAN CALL IT BY NAME
+export default function Loading({ color, children }) {
   return (
-    <div>
-      <Loading /> {/* OPEN THE LOADING COMPONENT TO SEE HOW THE PROPS ARE HANDLED */}
-      <Loading color="green" />
-      <Loading color="orange" />
-      <Loading color="purple" />
-
-      {/* CHILDREN */}
-      <Loading>
-        <p>The children are between BOTH and opening and closing tag for the component</p>
-      </Loading>
+    <div className="text-center mt-5">
+      <Spinner
+        animation="border"
+        style={{
+          color,
+          width: '100px',
+          height: '100px',
+        }}
+      />
+      {/* if the children prop is not passed, children will not render */}
+      {children}
     </div>
   );
 }
+
+// Proptypes tell the function what data type to expect
+Loading.propTypes = {
+  color: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.any]),
+};
+
+Loading.defaultProps = {
+  color: 'red',
+  children: 'nothing here',
+};
